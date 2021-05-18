@@ -1,0 +1,22 @@
+{
+  "name": "general-knowledge",
+  "version": "1.0.0",
+  "description": "To learn some General knowledge questions and tips",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "cors": "^2.8.5",
+    "body-parser": "^1.19.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "tamil natural treatment",
+    "General Knowledge in Tamil",
+    "Tamil treatment"
+  ],
+  "author": "Silambarasan R",
+  "license": "ISC"
+}
