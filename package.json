@@ -2,7 +2,7 @@
   "name": "general-knowledge",
   "version": "1.0.0",
   "description": "To learn some General knowledge questions and tips",
-  "main": "index.js",
+  "main": "server.js",
   "dependencies": {
     "express": "^4.17.1",
     "cors": "^2.8.5",
