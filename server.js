@@ -80,6 +80,7 @@ app.get('/api/listGK', (req, res) => {
     let dated = {};
     if(params.from !== undefined && params.from !== null) {
       dated = {
+        ...dated,
         $gte: new Date(params.from),
       };      
     }
@@ -91,10 +92,38 @@ app.get('/api/listGK', (req, res) => {
       };      
     }
 
-    cond = {
-        createdAt: dated
+    if(params.type !== undefined && params.type !== null) {
+      cond = {
+        ...cond,
+        type: params.type
+      }
     }
-    
+
+    if(params.search !== undefined && params.search !== null) {
+      let utfString = params.search.toString('utf8');
+      cond = {
+        ...cond,
+        $or: [
+          {
+            description: {
+              $regex: '.*' + utfString + '.*'
+            }
+          },
+          {
+            answer: {
+              $regex: '.*' + utfString + '.*'
+            }
+          }
+        ]
+      }
+    }
+
+    if(Object.keys(dated).length > 0) {
+      cond = {
+          ...cond,
+          createdAt: dated
+      }
+    }
   }
 
   Tips.find(cond, function(err, data) {
