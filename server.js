@@ -56,8 +56,9 @@ app.post('/api/addGeneralKnowledge', (req, res) => {
     type: params.type,
     description: params.question.toString('utf8'),
     answer: (params.type == 'question')?params.answer:null,
-    status: 1,
-    createdAt: new Date()
+    status: params.status ? params.status : 1,
+    createdAt: new Date(),
+    modifiedAt: null
   })
 
   insertion.save(function(err, insertedData) {    
@@ -66,7 +67,7 @@ app.post('/api/addGeneralKnowledge', (req, res) => {
       return res.json({ status: "error", error: err })
     }
 
-    res.redirect("/")
+    res.json({ status: "success", data: insertedData })
   })
 })
 
