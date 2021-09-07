@@ -216,6 +216,24 @@ app.get('/api/listGK', async (req, res) => {
       })
 })
 
+app.get('/api/exportListGk', async (req, res) => {
+  Tips.find({}, null, {
+    sort: {
+      createdAt: 1
+    }
+  }).exec(function(err, data) {
+      if(err) {
+        console.log(err);
+        return res.json({ status: "error", error: err })
+      }
+
+      return res.json({
+        status: "success",
+        data 
+      })
+  })
+})
+
 // Server instance
 const server = app.listen(3000, () => {
   console.log('Your application is running on ' + server.address().port);
